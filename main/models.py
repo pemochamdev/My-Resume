@@ -120,7 +120,7 @@ class PortFolio(models.Model):
     body = RichTextField(blank=True, null = True)   
     image = models.ImageField(blank=True, null = True, upload_to='PortFolio')
     slug = models.SlugField()
-    is_activate = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         if self.slug:
@@ -152,7 +152,7 @@ class Blog(models.Model):
     body = RichTextField(blank=True, null = True)   
     image = models.ImageField(blank=True, null = True, upload_to='blog')
     slug = models.SlugField()
-    is_activate = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -180,11 +180,11 @@ class Blog(models.Model):
 class Certificate(models.Model):
 
     date = models.DateTimeField(null=True, blank=True)
-    author = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'blog')
+    author = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'certificate')
     name = models.CharField(max_length=200, blank=True, null = True)
     title = models.CharField(max_length=200, blank=True, null = True)
     description = models.CharField(max_length=500, blank=True, null = True)
-    is_activate = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

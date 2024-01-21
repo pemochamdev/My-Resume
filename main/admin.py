@@ -21,7 +21,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 @admin.register(ContactProfile)
 class ContactProfileAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'email', 'is_active')
+    list_display = ('id', 'name', 'email', 'timestamp')
 
 
 
@@ -43,7 +43,7 @@ class MediaAdmin(admin.ModelAdmin):
 class PortFolioAdmin(admin.ModelAdmin):
     
 
-    list_display = ('id', 'date', 'name')
+    list_display = ('id', 'date', 'name', 'is_active')
     prepopulated_fields = {'slug':('name',)}
 
 

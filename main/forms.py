@@ -14,7 +14,7 @@ class ContactForm(forms.ModelForm):
 
         self.fields['name'].widget.attrs['placeholder'] = 'Enter Your name'
         self.fields['email'].widget.attrs['placeholder'] = 'Enter Your Email'
-        self.fields['mesaage'].widget.attrs['placeholder'] = 'Enter Your mesaage'
+        self.fields['mesaage'].widget.attrs['placeholder'] = 'Enter Your message'
   
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
