@@ -12,7 +12,7 @@ class Skill(models.Model):
 
     name = models.CharField(max_length=200, blank=True, null = True)
     score = models.IntegerField(default = 80, blank=True, null = True)
-    image = models.FileField(upload_to='skills', blank=True, null = True)
+    image = models.ImageField(upload_to='skills', blank=True, null = True)
     is_key_skill = models.BooleanField()
 
     def __str__(self):
@@ -31,8 +31,9 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(User, on_delete = models.CASCADE, related_name  = 'profile')
     title = models.CharField(max_length=200, blank=True, null = True)
+    bio = models.CharField(max_length = 330, blank=True, null = True)
     avatar = models.ImageField(blank=True, null = True, upload_to='profile')
-    skills = models.ForeignKey(Skill, on_delete = models.CASCADE, related_name  = 'skill')
+    skills = models.ManyToManyField(Skill, related_name  = 'skill')
     cv = models.FileField(upload_to='CV', blank=True, null = True)
 
 
@@ -49,7 +50,7 @@ class UserProfile(models.Model):
 class ContactProfile(models.Model):
 
     timestamp = models.DateTimeField(auto_now_add = True)
-    name = models.ForeignKey(User, on_delete = models.CASCADE)
+    name = models.CharField(max_length = 200)
     email = models.EmailField()
     message = RichTextField()
 

@@ -27,13 +27,15 @@ class IndexView(generic.TemplateView):
 
         testimonials = Testimonial.objects.filter(is_active = True)
         certificates = Certificate.objects.filter(is_active = True)
-        blogs = Blog.objects.filter(is_active = True)
+        blogs = Blog.objects.filter(is_active = True) 
         portfolio = PortFolio.objects.filter(is_active = True)
+        skills = Skill.objects.filter(is_key_skill = True).order_by('name')
 
         context['testimonials'] = testimonials
         context['certificates'] = certificates
         context['blogs'] = blogs
-        context['portfolio'] = portfolio
+        context['portfolios'] = portfolio
+        context['skills'] = skills
 
         return context
 
@@ -86,7 +88,7 @@ class BlogListView(generic.ListView):
         return super().get_queryset().filter(is_active = True)
 
 
-class PortFolioDetailView(generic.DetailView):
+class BloglioDetailView(generic.DetailView):
 
 
     model = Blog
